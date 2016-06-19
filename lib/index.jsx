@@ -64,7 +64,7 @@ class App extends React.Component {
     addMessageToHistory(message) {
         let { messages } = this.state;
         this.setState({
-            endpts: { start: 0, end: this.maxMsgs },
+            endpts: { start: Math.max(messages.length-this.maxMsgs-1, 0), end: messages.length },
             messages: messages.concat([message])
         });
     }
@@ -90,10 +90,10 @@ class App extends React.Component {
         const { messages, endpts } = this.state;
         this.updateMaxMsgs();
         this.bindEvents();
-
+        const newMessages = messages.slice(endpts.start, endpts.end);
         return (
             <div>
-                <ChatHistory blurbs={ messages.slice(endpts.start, endpts.end) }/>
+                <ChatHistory blurbs={ newMessages }/>
                 <Chat userInputRelayer={ this.post.bind(this) }/>
             </div>
          );
