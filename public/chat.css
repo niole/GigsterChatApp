@@ -1,0 +1,40 @@
+body {
+  background: whitesmoke;
+  padding: 0;
+  margin: 0;
+}
+
+input:focus {
+  outline: 0;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+}
+
+.user-message {
+  padding: 10px 0;
+  font-size: 20px;
+}
+
+.all-messages {
+  bottom: 66px;
+  position: absolute;
+  list-style: none;
+  padding: 20px 10px;
+  width: 97%;
+}
+
+.scroll-vert {
+  overflow-y: scroll;
+}
+
+.chat-input {
+  color: #aa7243;
+  position: absolute;
+  bottom: 0;
+  font-size: 20px;
+  padding: 20px 10px;
+  width: 100%;
+}
