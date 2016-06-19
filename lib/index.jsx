@@ -1,10 +1,11 @@
-var React = require('react');
-var ReactDOM = require('react-dom');
+import React from 'react';
+import ReactDOM from 'react-dom';
+import  Chat from './Chat.jsx';
 
-var Hw = React.createClass({
+class App extends React.Component {
     render() {
-        return <h1>hello world</h1>;
+        return <Chat/>;
     }
-});
+}
 
-ReactDOM.render(<Hw/>, document.getElementById("start"));
+ReactDOM.render(<App/>, document.getElementById("start"));
