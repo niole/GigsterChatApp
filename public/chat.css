@@ -1,5 +1,6 @@
 body {
   background: whitesmoke;
+  font-family: BlinkMacSystemFont;
   padding: 0;
   margin: 0;
 }
@@ -14,16 +15,27 @@ ul {
 }
 
 .user-message {
-  padding: 10px 0;
-  font-size: 20px;
+  margin: 10px 0;
+  padding: 0.3em;
+  padding-left: 0.8em;
+  border-left: 0.5em solid #D8D8D8;
+  background: white;
 }
 
 .all-messages {
   bottom: 66px;
   position: absolute;
   list-style: none;
-  padding: 20px 10px;
+  padding: 10px;
   width: 97%;
+}
+
+.message-field {
+  word-wrap: break-word;
+  line-height: 1.5;
+  padding-left: 0;
+  border: 0;
+  margin-right: 5px;
 }
 
 .scroll-vert {
@@ -31,10 +43,12 @@ ul {
 }
 
 .chat-input {
+  width: 97%;
+  margin: 9px 10px;
   color: #aa7243;
   position: absolute;
   bottom: 0;
+  border: 0;
   font-size: 20px;
   padding: 20px 10px;
-  width: 100%;
 }

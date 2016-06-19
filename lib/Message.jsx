@@ -18,9 +18,10 @@ class Message extends React.Component {
     render() {
         const { message } = this.props;
         const { user, msg, ts } = message;
+
         return (
             <li className="user-message">
-                {user}{msg}{ts}
+                <div className="message-field user-message">{msg}</div>
             </li>
         );
     }
