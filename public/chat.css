@@ -18,9 +18,7 @@ ul {
   margin: 10px 0;
   padding: 0.3em;
   padding-left: 0.8em;
-  /*border-left: 0.5em solid #D8D8D8;*/
   border-left: 0.5em solid;
-  border-left-color:  #D8D8D8;
   background: white;
 }
 
@@ -29,7 +27,7 @@ ul {
   position: absolute;
   list-style: none;
   padding: 10px;
-  width: 97%;
+  width: 50%;
 }
 
 .message-field {
@@ -96,4 +94,17 @@ ul {
     -webkit-transform: scale(1.0);
     transform: scale(1.0);
   }
+}
+
+.all-features {
+  width: 50%;
+  display: inline-block;
+  position: absolute;
+  right: 0;
+  bottom: 130px;
+}
+
+.feature {
+  list-style: none;
+  padding: 15px;
 }

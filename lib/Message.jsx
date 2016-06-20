@@ -39,4 +39,3 @@ class Message extends React.Component {
 
 Message.propTypes = propTypes;
 export default Message;
-

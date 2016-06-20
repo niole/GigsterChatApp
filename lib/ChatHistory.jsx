@@ -1,14 +1,16 @@
 import React, { PropTypes } from 'react';
 import Message from './Message.jsx';
+import Feature from './Feature.jsx';
 
-const { arrayOf, shape, string } = PropTypes;
+const { array, arrayOf, shape, string } = PropTypes;
 
 const propTypes = {
     blurbs: arrayOf(shape({
         user: string,
         msg: string,
         ts: string
-    }))
+    })),
+    features: array
 };
 
 class ChatHistory extends React.Component {
@@ -24,14 +26,27 @@ class ChatHistory extends React.Component {
         return blurbs.map(this.renderBlurb);
     }
 
+    showFeatures(features) {
+        return features.map( (feat, i) => {
+            return <Feature index={ i } key={`feature-${i}`} feature={feat}/>;
+        });
+    }
+
     render() {
-        const { blurbs } = this.props;
+        const { features, blurbs } = this.props;
         return (
-            <ul
-                id="all-messages"
-                className="all-messages">
-                { this.showMessages(blurbs) }
-            </ul>
+            <div>
+                <ul
+                    id="all-messages"
+                    className="all-messages">
+                    { this.showMessages(blurbs) }
+                </ul>
+                <ul
+                    id="all-features"
+                    className="all-features">
+                    { this.showFeatures(features) }
+                </ul>
+           </div>
         );
     }
 }

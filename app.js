@@ -4,7 +4,7 @@ var app = express();
 app.use(express.static('public'));
 
 app.get('/', function (req, res) {
-   res.sendFile( __dirname + "/public/" + "index.js" );
+   res.sendFile( __dirname + "/public/index.js" );
 });
 
 //app.post('/file_upload', function (req, res) {
