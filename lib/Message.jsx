@@ -13,6 +13,14 @@ const propTypes = {
 class Message extends React.Component {
     constructor() {
         super();
+        this.colorMap = {
+            me: "#D8D8D8",
+            bot: "#52004f"
+        };
+    }
+
+    getColorStyle(user) {
+        return { borderLeftColor: this.colorMap[user] };
     }
 
     render() {
@@ -20,7 +28,9 @@ class Message extends React.Component {
         const { user, msg, ts } = message;
 
         return (
-            <li className="user-message">
+            <li
+                style={this.getColorStyle(user)}
+                className="user-message">
                 <div className="message-field user-message">{msg}</div>
             </li>
         );

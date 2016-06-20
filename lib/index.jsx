@@ -3,9 +3,10 @@ import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import Chat from './Chat.jsx';
 import ChatHistory from './ChatHistory.jsx';
+import Waiting from './Waiting.jsx';
 
 const heightMsg = 65;
-const offsetBottomMsgs = 66;
+const offsetBottomMsgs = 130;
 
 class App extends React.Component {
     constructor() {
@@ -13,7 +14,8 @@ class App extends React.Component {
         this.maxMsgs = 0;
         this.state = {
             endpts: { start: 0, end: this.maxMsgs },
-            messages: []
+            messages: [],
+            bot: false
         };
     }
 
@@ -61,11 +63,12 @@ class App extends React.Component {
         this.maxMsgs = Math.floor(heightWindow/heightMsg);
     }
 
-    addMessageToHistory(message) {
+    addMessageToHistory(message, waitingForBot) {
         let { messages } = this.state;
         this.setState({
-            endpts: { start: Math.max(messages.length-this.maxMsgs-1, 0), end: messages.length },
-            messages: messages.concat([message])
+            endpts: { start: Math.max(messages.length-this.maxMsgs, 0), end: messages.length+1 },
+            messages: messages.concat([message]),
+            bot: waitingForBot
         });
     }
 
@@ -74,27 +77,40 @@ class App extends React.Component {
             msg: userInput,
             user: "me",
             ts: new Date().toString()
-        });
+        }, true);
 
         const url = "";
         //$.post( url, { data: value } )
         //  .done(function(data) {
         //      console.log('result', data);
+                //this.setState({ bot: false });
+
         //  })
         //  .fail(function(err) {
         //      console.log('error', err);
+                //this.setState({ bot: false });
         //  });
+
+        setTimeout(() => {
+            this.addMessageToHistory({
+                msg: "What do you mean by " + userInput + "?",
+                user: "bot",
+                ts: new Date().toString()
+            }, false);
+        }, 2000);
     }
 
     render() {
-        const { messages, endpts } = this.state;
+        const { bot, messages, endpts } = this.state;
         this.updateMaxMsgs();
         this.bindEvents();
         const newMessages = messages.slice(endpts.start, endpts.end);
+        console.log('newMessages', newMessages);
         return (
             <div>
                 <ChatHistory blurbs={ newMessages }/>
-                <Chat userInputRelayer={ this.post.bind(this) }/>
+                { bot && <Waiting/> }
+                <Chat waitingForBot={ bot } userInputRelayer={ this.post.bind(this) }/>
             </div>
          );
     }
