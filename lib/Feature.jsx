@@ -14,7 +14,7 @@ class Feature extends React.Component {
 
     render() {
         const { index } = this.props;
-        return <li ref="feat" className="feature"/>;
+        return <div ref="feat" className="feature"/>;
     }
 }
 

@@ -72,12 +72,15 @@ class App extends React.Component {
 
     addMessageToHistory(message, waitingForBot) {
         let { features, messages } = this.state;
-        let newFeatures = new Features(null, 40, 500, this.data);
+        let newFeatures = new Features(null, 40, window.innerHeight-offsetBottomMsgs, this.data);
         this.setState({
             endpts: { start: Math.max(messages.length-this.maxMsgs, 0), end: messages.length+1 },
             messages: messages.concat([message]),
-            features: features.concat([newFeatures]),
+            //features: features.concat([newFeatures]),
+            features: [newFeatures],
             bot: waitingForBot
+        }, () => {
+            this.CH.scrollTop = 1000;
         });
     }
 
@@ -113,7 +116,7 @@ class App extends React.Component {
         const { start, end } = endpts;
         const newMessages = msgs.slice(start, end);
         const newFeatures = feats.slice(start, end);
-        return { newFeatures, newMessages };
+        return { newFeatures: feats, newMessages: msgs };
     }
 
     render() {

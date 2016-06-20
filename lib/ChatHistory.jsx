@@ -32,20 +32,28 @@ class ChatHistory extends React.Component {
         });
     }
 
+    shouldScroll(features) {
+        return features.length*65 > window.innerHeight-130;
+    }
+
     render() {
         const { features, blurbs } = this.props;
+        let scroll = "";
+        let scrollStyle = {};
+        if (this.shouldScroll(blurbs)) {
+            scroll = "scroll-vert";
+            scrollStyle = { height: window.innerHeight-130 };
+        }
+
         return (
-            <div>
+            <div className="msgs-window">
                 <ul
+                    style={ scrollStyle }
                     id="all-messages"
-                    className="all-messages">
+                    className={`all-messages ${scroll}`}>
                     { this.showMessages(blurbs) }
                 </ul>
-                <ul
-                    id="all-features"
-                    className="all-features">
-                    { this.showFeatures(features) }
-                </ul>
+                { this.showFeatures(features) }
            </div>
         );
     }

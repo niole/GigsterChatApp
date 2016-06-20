@@ -23,11 +23,11 @@ ul {
 }
 
 .all-messages {
-  bottom: 130px;
-  position: absolute;
+  display: inline-block;
   list-style: none;
-  padding: 10px;
   width: 50%;
+  position: absolute;
+  bottom: 130px;
 }
 
 .message-field {
@@ -40,6 +40,7 @@ ul {
 
 .scroll-vert {
   overflow-y: scroll;
+  position: relative;
 }
 
 .chat-input {
@@ -96,15 +97,18 @@ ul {
   }
 }
 
-.all-features {
-  width: 50%;
+.feature {
   display: inline-block;
   position: absolute;
   right: 0;
-  bottom: 130px;
+  width: 50%;
+  bottom: 0;
 }
 
-.feature {
-  list-style: none;
-  padding: 15px;
+.msgs-window {
+  width: 98%;
+  left: 10px;
+  bottom: 130px;
+  position: absolute;
+  height: 85%;
 }
